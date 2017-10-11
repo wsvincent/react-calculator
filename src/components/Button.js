@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 
 class Button extends Component {
+  onClick = () => {
+    console.log('click');
+  };
+
   render() {
-    return <button>Button here</button>;
+    return <button onClick={this.onClick}>{this.props.name}</button>;
   }
 }
 
