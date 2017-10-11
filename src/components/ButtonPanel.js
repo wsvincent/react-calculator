@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Button from './Button';
 
 class ButtonPanel extends Component {
   render() {
-    return <div>ButtonPanel here</div>;
+    return (
+      <div>
+        <Button />
+      </div>
+    );
   }
 }
 
