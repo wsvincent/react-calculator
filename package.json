@@ -2,6 +2,7 @@
   "name": "calculator",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://wsvincent.github.io/react-calculator",
   "dependencies": {
     "big-js": "^3.1.3",
     "prop-types": "^15.6.0",
