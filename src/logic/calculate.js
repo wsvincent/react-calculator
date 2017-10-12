@@ -1,27 +1,5 @@
-function isNumber(item) {
-  return !!item.match(/[0-9]+/); // use Boolean...
-}
-
-function operate(numberOne, numberTwo, operation) {
-  const one = Big(numberOne);
-  const two = Big(numberTwo);
-  if (operation === '+') {
-    return one.plus(two).toString();
-  }
-  if (operation === '-') {
-    return one.minus(two).toString();
-  }
-  if (operation === 'x') {
-    return one.times(two).toString();
-  }
-  if (operation === '÷') {
-    return one.div(two).toString();
-  }
-  if (operation === '%') {
-    return one.mod(two).toString();
-  }
-  throw Error(`Unknown operation '${operation}'`);
-}
+import operate from './operate';
+import isNumber from './isNumber';
 
 /** Given buttonName and calculator data object, return an updated data object.
  * 
@@ -45,7 +23,7 @@ export default function calculate(obj, buttonName) {
     if (buttonName === '0' && obj.next === '0') {
       return {};
     }
-  
+
     // If operation, update next
     if (obj.operation) {
       if (obj.next) {
@@ -85,15 +63,15 @@ export default function calculate(obj, buttonName) {
     return { total: '0.' };
   }
 
-  if (buttonName === '='){
+  if (buttonName === '=') {
     if (obj.next && obj.operation) {
       return {
         total: operate(obj.total, obj.next, obj.operation),
         next: null,
-        operation: null,
+        operation: null
       };
     } else {
-      // '=` with no operation, do nothing 
+      // '=` with no operation, do nothing
       return {};
     }
   }
@@ -102,7 +80,7 @@ export default function calculate(obj, buttonName) {
     if (obj.next) {
       return { next: (-1 * parseFloat(obj.next)).toString() };
     }
-    if (obj.total {
+    if (obj.total) {
       return { total: (-1 * parseFloat(obj.total)).toString() };
     }
     return {};
@@ -112,6 +90,6 @@ export default function calculate(obj, buttonName) {
   return {
     total: obj.next,
     next: null,
-    operation: buttonName,
+    operation: buttonName
   };
 }
