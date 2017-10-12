@@ -8,16 +8,27 @@ class Button extends Component {
   };
 
   render() {
+    let className = 'component-button';
+    if (this.props.orange) {
+      className += ' orange';
+    }
+    if (this.props.wide) {
+      className += ' wide';
+    }
+
     return (
-      <button className="component-button" onClick={this.handleClick}>
-        {this.props.name}
-      </button>
+      <div className={className}>
+        <button onClick={this.handleClick}>{this.props.name}</button>
+      </div>
     );
   }
 }
 
 Button.propTypes = {
-  clickHandler: PropTypes.func
+  name: PropTypes.string,
+  clickHandler: PropTypes.func,
+  orange: PropTypes.bool,
+  wide: PropTypes.bool
 };
 
 export default Button;
